@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+
 import { AppContext } from '../context/AppProvider';
 
 import '../styles/components/Checkout.css';
@@ -8,20 +9,11 @@ const Checkout = () => {
   const {
     state: { cart },
     removeFromCart,
+    handleSumTotal,
   } = useContext(AppContext);
 
   const handleRemove = (index) => {
-    // console.log(product, index);
-    // console.log(cart.splice(index, 1) && [...cart]);
     removeFromCart(index);
-  };
-
-  const handleSumTotal = () => {
-    const reducer = (accumulator, currentValue) =>
-      accumulator + currentValue.price;
-    const sum = cart.reduce(reducer, 0);
-
-    return sum;
   };
 
   return (

@@ -26,7 +26,29 @@ const useInitialState = () => {
     });
   };
 
-  return { addToCart, removeFromCart, addToBuyer, state };
+  const addNewOrder = (payload) => {
+    setState({
+      ...state,
+      orders: [...state.orders, payload],
+    });
+  };
+
+  const handleSumTotal = () => {
+    const reducer = (accumulator, currentValue) =>
+      accumulator + currentValue.price;
+    const sum = state.cart.reduce(reducer, 0);
+
+    return sum;
+  };
+
+  return {
+    addToCart,
+    removeFromCart,
+    addToBuyer,
+    addNewOrder,
+    handleSumTotal,
+    state,
+  };
 };
 
 export default useInitialState;

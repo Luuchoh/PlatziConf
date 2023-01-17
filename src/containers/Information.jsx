@@ -14,7 +14,6 @@ const Information = () => {
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
-    console.log(e);
     e.preventDefault();
     const formData = new FormData(form.current);
     const buyer = {
